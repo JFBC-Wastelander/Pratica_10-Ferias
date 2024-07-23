@@ -1,28 +1,31 @@
-const prompt = require("prompt-sync")()
+const prompt = require("prompt-sync")();
 
-while (true){
-console.log(`Tecle 1 para adicionar uma tarefa.
-Tecle 2 para ver suas tarefas.
-Tecle 3 para deletar sua tarefa.
-Tecle 4 para atualizar sua tarefa.
-Tecle 5 para sair.`)
-let entrada = +prompt("O que deseja realizar? ")
-switch (entrada) {
+const { criar, atualizar, remover, listar } = require("./atividades.js");
+
+while (true) {
+  console.log(
+    "O que deseja fazer?\n1 - Criar\n2 - Atualizar\n3 - Remover\n4 - Listar\n5 - Sair\n"
+  );
+  let opcao = Number(prompt());
+
+  switch (opcao) {
     case 1:
-        console.log("adicionar")
-        break;
+      criar();
+      break;
     case 2:
-        console.log("ver")
-        break
+      atualizar();
+      break;
     case 3:
-        console.log("deletar")
-        break
+      remover();
+      break;
     case 4:
-        console.log("atualizar")
-        break
+      listar();
+      break;
     case 5:
-        console.log("Saindo...")
-        process.exit()
-        break
-}
+      process.exit();
+      break;
+    default:
+      console.log("Opção inválida");
+      break;
+  }
 }
